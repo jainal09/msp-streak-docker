@@ -25,7 +25,7 @@ SECRET_KEY = 'jg^$(lbjb*3-+cv(88ngpb4xb=6vbvxj*1i)%m!*c2(e_i6%b8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["msp-streak-docker.eastus.cloudapp.azure.com"]
+ALLOWED_HOSTS = ["msp-streak-docker.eastus.cloudapp.azure.com", "0.0.0.0"]
 
 
 # Application definition
