@@ -196,3 +196,25 @@ $ docker tag [local-image-name:tag] [docker-hub-user-name/repository-name]:tag
 ```
 $ docker push [docker-hub-user-name/repository-name]:tag
 ```
+
+## Docker-Compose
+1. Build Images
+```
+$ docker-compose build
+```
+or 
+```
+docker-compose up --build
+```
+2. Start and Run all Containers
+```
+docker-compose up
+```
+3. Stop Containers
+```
+docker-compose down
+```
+4. Starts a specific service from docker-compose
+```
+docker-compose run [service-name]
+```
