@@ -2,6 +2,11 @@
 All the Codes and presentation of my workshop Docker 1o1 at Msp Streak
 
 ## Presentation link : https://bit.ly/2W3dMVx​
+
+## YouTube video of the webinar record
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4Sgz6EECnR8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 # Docker Cheat Sheet
 ## Installation
 Docker
