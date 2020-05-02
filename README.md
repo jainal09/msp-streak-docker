@@ -193,6 +193,10 @@ $ docker exec -it [container-name] sh
 ```
 $ docker stats
 ```
+23. Get Ip address of docker
+```
+$ docker-machine ip
+```
 ## Push To Docker Hubs
 1. Tag Image like this
 ```
