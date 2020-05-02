@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import mimetypes
+import socket
 mimetypes.add_type("text/css", ".css", True)
 
 
@@ -28,7 +29,7 @@ SECRET_KEY = 'your secret key'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["msp-streak-docker.eastus.cloudapp.azure.com", "0.0.0.0"]
+ALLOWED_HOSTS = ["40.71.232.221", "127.0.0.1", "0.0.0.0"]
 
 
 # Application definition
@@ -42,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todolist',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -130,3 +130,5 @@ STATIC_ROOT = BASE_DIR+"/todolist/static"
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+HOSTNAME = socket.gethostname()
