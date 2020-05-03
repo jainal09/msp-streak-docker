@@ -54,10 +54,9 @@ kubectl pause deployment [deployment-name]
 ```
 > unpause for unpausing
 13. see logs
+
 ```
-
- - [ ] kubectl logs pod-id
-
+kubectl logs pod-id
 ```
 For following logs.
 ```
