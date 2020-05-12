@@ -39,7 +39,7 @@ def index(request): #the index view
 def check(request): #the index view
 	hostname = settings.HOSTNAME
 	data = {
-		"greet" : "hello from kube",
+		"greet" : "hello from kube [v2]",
 		"hostname" : hostname,
 	}
 	return JsonResponse(data)

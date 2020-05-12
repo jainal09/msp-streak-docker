@@ -1,0 +1,61 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: to-do-app
+    version: v1
+  name: to-do-app
+  namespace: default
+spec:
+  replicas: 3
+  # number of replicas
+  minReadySeconds: 5
+  # used for defining min time required for application to start and
+  # running - not preferred to use (jugad)
+  selector:
+    matchLabels:
+      # used to match labels with the pods inside template/labels
+      app: to-do-app
+  strategy:
+    # update strategy for kubernetes
+    #check https://www.weave.works/blog/kubernetes-deployment-strategies
+    #for more update strategies
+    rollingUpdate:
+      maxSurge: 25%
+      # how many extra new pods we want to run on our cluster
+      maxUnavailable: 25%
+      # how many pods we can lose during the rolling update.
+    type: RollingUpdate
+  template:
+# inside template we define instructions for pods
+    metadata:
+      labels:
+        app: to-do-app
+    spec:
+      containers:
+      - image: todopractice.azurecr.io/todopractice/todo:v2
+        imagePullPolicy: Always
+        name: todo
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: to-do-app
+  name: to-do-app
+  namespace: default
+spec:
+  ports:
+  - nodePort: 30975
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    # used to match a service to a pod through app
+    app: to-do-app
+  sessionAffinity: None
+# used for session based application if sessionAffinity is None then
+# Pods can be changed to serve request
+  type: LoadBalancer

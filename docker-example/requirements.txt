@@ -1,2 +1,2 @@
 whitenoise
-django
+django~=3.0.5
