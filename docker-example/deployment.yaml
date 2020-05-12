@@ -100,6 +100,7 @@ spec:
   selector:
     # used to match a service to a pod through app
     app: to-do-app
+    version: v2
   sessionAffinity: None
 # used for session based application if sessionAffinity is None then
 # Pods can be changed to serve request
