@@ -16,6 +16,7 @@ spec:
     matchLabels:
       # used to match labels with the pods inside template/labels
       app: to-do-app
+      version: v1
   strategy:
     # update strategy for kubernetes
     #check https://www.weave.works/blog/kubernetes-deployment-strategies
@@ -31,9 +32,53 @@ spec:
     metadata:
       labels:
         app: to-do-app
+        version: v1
     spec:
       containers:
-      - image: todopractice.azurecr.io/todopractice/todo:v2
+      - image: kubepracticecontainer.azurecr.io/kubepracticecontainer/kubepracticecontainer:v1
+        imagePullPolicy: Always
+        name: todo
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: to-do-app
+    version: v2
+  name: to-do-app
+  namespace: default
+spec:
+  replicas: 3
+  # number of replicas
+  minReadySeconds: 5
+  # used for defining min time required for application to start and
+  # running - not preferred to use (jugad)
+  selector:
+    matchLabels:
+      # used to match labels with the pods inside template/labels
+      app: to-do-app
+      version: v2
+  strategy:
+    # update strategy for kubernetes
+    #check https://www.weave.works/blog/kubernetes-deployment-strategies
+    #for more update strategies
+    rollingUpdate:
+      maxSurge: 25%
+      # how many extra new pods we want to run on our cluster
+      maxUnavailable: 25%
+      # how many pods we can lose during the rolling update.
+    type: RollingUpdate
+  template:
+# inside template we define instructions for pods
+    metadata:
+      labels:
+        app: to-do-app
+        version: v2
+    spec:
+      containers:
+      - image: kubepracticecontainer.azurecr.io/kubepracticecontainer/kubepracticecontainer:v2
         imagePullPolicy: Always
         name: todo
       restartPolicy: Always
