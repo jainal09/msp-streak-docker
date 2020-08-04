@@ -187,7 +187,7 @@ $ docker rmi [image-id]
 
 21. Excessing shell of a container
 ```
-$ docker exec -it [container-name] sh
+$ docker exec -it [container-name] bash
 ```
 22. See statistics of docker usage of resources like ram, cpu and network usage
 ```
